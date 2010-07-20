@@ -1,0 +1,38 @@
+<h1><%= @content_title%></h1>
+
+
+<% if @measure_type %>
+	<table>
+	  <tr>
+	  </tr>
+	<% @user_datas.each do |user_data| %>
+	  <tr>
+		<td>
+			<%# if user_data.datas.is_a? Hash%>
+				<%# user_data.datas.each{|k,v| %>
+					<%#= "#{k}:#{v}"%>
+				<%# }%>
+			<%# end %>
+			<%= user_data.measured_at.strftime("%Y/%m/%d %H:%M:%S") %>
+		</td>
+	    <td><%= link_to 'Show', user_data_path(current_user,user_data) %></td>
+	    <td><%#= link_to 'Edit', edit_user_data_path(current_user,user_data) %></td>
+	    <td><%= link_to 'Destroy', user_data_path(current_user,user_data), :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+	<div style="margin-top:10px">
+		<%= will_paginate @user_data%>
+	</div>
+	<%= @graph if @graph%>
+	<%= link_to 'Create Data', new_user_data_path ,:measure_type=>@measure_type %>
+	<a href='<%= "#{new_user_data_path}?measure_type=#{@measure_type}" %>'>Create Data</a>
+<% else %>
+	<h1>Select the measure type</h1>
+	<ul id="measure_list">
+	<% MeasureData::ALLOW_TYPE.each{|measure_type|%>
+		<li><%= link_to "#{measure_type.classify}" ,user_datas_path(current_user,:type=>measure_type.classify) %></li>
+	<% } %>
+	</ul>
+<% end %>
+

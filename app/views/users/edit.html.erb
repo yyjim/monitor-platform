@@ -1,0 +1,50 @@
+<style>
+	table{
+		font-size:14px;
+	}
+	table th, table td{
+		padding:3px 3px;
+	}
+	table th{
+		text-align:right;
+		background:#E2E0D3;
+	}
+</style>
+<h1>My Account Information</h1>
+	<table>
+		<tr>
+			<th>Account</th>
+			<td><strong><%= @user.login%></strong></td>
+		</tr>
+		<tr>
+			<th>EMAIL</th>
+			<td><strong><%= @user.email%></strong></td>
+		</tr>
+		<tr>
+			<th>
+				 API Key: 
+			</th>
+			<% if @user.api_is_enabled? %>
+			<td>
+				<strong><%= @user.api_key %></strong>
+				(<%= link_to "re-generate", api_key_path, :method => :post %> | 
+				 <%= link_to "disable", api_key_path, :method => :delete %>)
+			</td>
+			<% else %>
+			<td>
+				You'll need a unique key to make calls to the API.  Remember to keep this key a secret as it can be used to access your account.
+			  <%= link_to("Get a key", api_key_path, :method => :post) %>
+			<% end %>
+			</td>
+		</tr>
+	</table>
+    <%#= link_to("test api create", api_datas_path,:method=>:psot) %>
+    <%#= link_to("test api edit", api_datas_path,:metohd=>:put) %>
+    <%#= link_to("test api delete", api_datas_path,:method=>:delete) %>
+<!-->
+<% form_tag api_datas_path do%>
+	<%= text_field "datas" ,"type" %>
+	<%= text_field "datas" ,"datas[type]"%>
+	<%= submit_tag "submit "%>
+<% end %>
+-->

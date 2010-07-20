@@ -1,0 +1,3 @@
+class BloodSugar < MeasureData
+
+end

@@ -1,0 +1,105 @@
+div#content{
+	float: left;
+	overflow: hidden;
+	width: 680px;
+}
+div#content div.description{
+	float: left;
+	margin: 30px;
+	width: 320px;
+}
+div.description p{
+	margin:10px;
+}
+div#content img.description{
+	float: right;
+	margin: 30px 16px 16px 0px !important;
+}
+
+a.next-feature, a.prev-feature{
+	float: left !important;
+	margin: 16px 0px 16px 16px !important;
+	width: 120px;
+}
+
+div.login{
+	padding-left:20px;
+	width:100%;
+	margin-bottom:5px;
+}
+div.login span.title{
+	display:inline-block;
+	width:70px;
+	text-align:right;
+}
+div.login .signup{
+	margin-left:5px;
+}
+#user-new ol#singup-form{
+	list-style-type:none;
+}
+#user-new #signup_btn{
+	float:right;
+	margin-right:18px;
+}
+ol#singup-form li{
+	margin-bottom:5px;
+	width:100%;
+}
+ol#singup-form li span.title{
+	display:inline-block;
+	width:70px;
+	text-align:right;
+}
+#site_title{
+	position: absolute;
+	bottom: 0px;
+	top:10px;
+	left: 100px;
+	color:white;
+	font-size:2em;
+	font-weight:bold;
+	letter-spacing:-1px;
+}
+#main_menu{
+	position: absolute;
+	bottom: 0px;
+	left: 100px;
+	margin-right: -500px;
+	padding-top:30px;
+}
+#main_menu ul{
+	margin:0 0;
+	padding:0 0;
+	list-style: none;
+	float:left;
+}
+#main_menu ul li{
+	float: left;
+	list-style-type: none;
+	margin: 0px 3px 3px 0px;
+	padding-top:2px;
+	white-space: nowrap;
+}
+#main_menu ul li a{
+	font-size:14px;
+	color:white;
+	text-decoration: none;
+	padding:8px;
+}
+#main_menu ul li a:hover{
+	background:#759FCF;
+}
+#main_menu ul li a.selected{
+	background:#E2E0D3;
+	color:#4A78BF;
+}
+#measure_list li{
+	font-size:15px;
+	padding:3px;
+}
+#nav #authentication{
+	position: absolute;
+	left: 100px;
+	padding-top:5px;
+}

@@ -1,0 +1,9 @@
+<div>
+	<% form_tag sessions_path do -%>
+	  <p>
+		EMAIL :<%= text_field :user, :email, :size => 20 %>
+		PASSWORD : <%= password_field :user ,:password ,:size=>20 %>
+	    <%= submit_tag  'login' %>
+	  </p>
+	<% end -%>
+</div>

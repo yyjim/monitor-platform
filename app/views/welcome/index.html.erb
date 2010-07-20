@@ -1,0 +1,64 @@
+<div style="border:1px solid #CCC;float:left">
+	<div class="description">
+		<h1>Wellcome!</h1>
+		<p>
+			This platform helps you to monitor your data from device. We support simple RESTful APL to access datas. And We also analysis data and show the result graph.
+		</p>
+		<!-->
+		<% if !current_user%>
+		<% form_tag session_path do -%>
+		 <p>
+			<fieldset id="login-fieldset">
+				<legend><h2>Login</h2></legend>
+			<div class="login">
+				<span class="title">Account : </span>
+				<span><%= text_field_tag 'login', @login %></span>
+			</div>
+			<div class="login">
+				<span class="title">PASSWORD : </span>
+				<span><%= password_field_tag 'password', nil %></span>
+			</div>
+			<div class="login">
+				<span class="title"></span>
+				<%= submit_tag  'login' ,:class=>'btn' %>
+				<a class="signup" href="">signup</a>
+			</div>
+			</fieldset>
+		 </p>
+		<% end -%>
+		<% end %>
+		-->
+		<fieldset id="user-new">
+			<legend><h2>Signup</h2></legend>
+		<div id="user-new-errors"></div>
+		<% form_for (@user) ,new_user_path do |f| %>
+			<ol id="singup-form">
+				<li>
+					<span class="title"><%= f.label :login, 'Login' %>: </span>
+					<span><%= f.text_field :login ,{:size=>nil}%></span>
+				</li>
+				<li>
+					<span class="title"><%= f.label :email, 'Email' %>: </span>
+					<span><%= f.text_field :email ,{:size=>nil}%></span>
+				</li>
+				<li>
+					<span class="title"><%= f.label :password, 'Password' %>: </span>
+					<span><%= f.password_field :password ,{:size=>nil}%></span>
+				</li>
+				<li>
+					<span class="title"><%= f.label :password_confirmation, 'Password   confirmation' %>: </span>
+					<span><%= f.password_field :password_confirmation ,{:size=>nil}%></span>
+				</li>
+			</ol>
+			<p>
+				<button id="signup_btn" type="submit" value="submit">Sign up!</button>
+			</p>
+		<% end %>
+		</fieldset>
+	</div>
+	<!--<img class="description" src="http://money.whatcodecraves.com/images/tour/app-introduction.png?1264197032">-->
+	<img class="description" src="/images/monitor_snapshot.png" width="274",height="250">
+</div>
+
+
+

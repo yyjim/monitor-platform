@@ -1,0 +1,33 @@
+
+<%#= show_data(@user_data) %>
+<%#= link_to 'Edit', edit_user_data_path(current_user,@user_data,:type=>@user_data.class.to_s.downcase) %> 
+
+<h1><%= @user_data.description %></h1>
+
+<div id="ofc_graph">
+	<%= @graph%>
+</div>
+<div>
+	<form action="<%= user_data_path(current_user,@user_data) %>" method="POST">
+		<input type="hidden" name="_method" value="put" />
+		edit description : <input type="text" name="user_data[description]" value="<%= @user_data.description %>" />
+		<input type="submit" value="儲存" />
+	</from>
+</div>
+<%= link_to 'Back', user_datas_path(:type=>@user_data.class.to_s.downcase) ,:style=>"font-size:14px"%> | 
+<a id="show_link" href="javascript:" onclick="$('inspect_data').show();$('show_link').hide();$('hide_link').show();" style="font-size:14px">
+	Show data value
+</a>
+<a id="hide_link" href="javascript:" onclick="$('inspect_data').hide();$('hide_link').hide();$('show_link').show();" style="display:none;font-size:14px">
+	Hide data value
+</a>
+
+<div id="inspect_data" style="display:none">
+	<h2>text data</h2>
+	<p style="margin:5px">
+	<%# @user_data.datas[:values].each_slice(20).to_a.each{|a|%>
+		<%#=a.join(',')%></br>
+	<%#}%>
+	<%= @user_data.datas[:values].inspect%>
+	</p>
+</div>

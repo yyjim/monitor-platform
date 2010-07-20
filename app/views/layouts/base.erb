@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title><%= h(yield(:title) || "Monitor Platform") %></title>
+    <%= stylesheet_link_tag 'application','monitor' %>
+	<% javascript(:defaults,"swfobject")%>
+	<% javascript%>
+    <%= yield(:head) %>
+  </head>
+  <body>
+	<div id="header">
+		<div class="header-wrap">
+			<div id="site_title">
+				Monitor Platform
+			</div>
+			<div id="main_menu">
+				<ul>
+					<li><a href="/" class="<%= menu_selected('home',@menu_selected)%>">Home</a></li>
+				<% if current_user %>
+					<li>
+						<a href="<%= user_datas_path(current_user) %>" class="<%= menu_selected('measure_datas',@menu_selected)%>">
+						Measure Data
+						</a>
+					</li>
+					<li><%= link_to 'My Account' ,edit_user_path(current_user),
+							:class=>menu_selected('my_account',@menu_selected)%>
+					</li>
+				<% end %>
+				</ul>
+			</div>
+		</div>
+		<br class="clr" /> 
+	</div>
+	<div id="nav">
+		<% if false && current_user%>
+		<ul>
+			<li>
+				<%= link_to 'QCM Measure Data' ,user_datas_path(current_user,:type=>'Qcm')%>
+			</li>
+		</ul>
+		<% end %>
+		<div id="authentication" class="">
+		<% if !current_user %>
+			<% form_tag session_path do %>
+				account:<%= text_field_tag 'login' %>
+				password:<%= password_field_tag 'password'%>
+				<%= submit_tag 'Login' ,:class=>"submit"%>
+			<% end %>
+			<%= link_to "Signup" ,new_user_path %>
+		<% else %>
+			<p>
+				Hello <%= current_user.login %>! <%= link_to "logout" ,session_path,:method=>'delete' %>
+			</p>
+		<% end %>
+		</div>
+	</div>
+    <div id="container">
+      
+      <%- if show_title? -%>
+        <h1><%=h yield(:title) %></h1>
+      <%- end -%>
+	  <div id="main">
+		<div id="content">
+			<%- flash.each do |name, msg| -%>
+	        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+	      	<%- end -%>
+      	<%= yield %>
+		</div>
+		<br class="clr" />
+	  </div>
+    </div>
+	<div id="footer">
+		<hr/>
+		<p id="site_info">
+		design by <a href="">yy_jim</a>. 2010
+		</p>
+	</div>
+  </body>
+</html>

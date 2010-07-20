@@ -1,0 +1,20 @@
+<h1>New user_data</h1>
+
+<% form_for @user_data , :url=>user_datas_path(current_user),:method=>"post" do |f| %>
+  <%= f.error_messages %>
+  <input type="hidden" name="measure_type" value="<%= @measure_type %>" />
+  <ol>
+	 <li>
+		<%= f.label :data, 'Data' %>: 
+		<textarea name="measure_data[datas][values]"><%= @user_data.datas[:values] if @user_data.datas %></textarea>
+	</li>
+	<li>
+		<%= f.label :email, 'source' %>: 
+		<input name="measure_data[datas][source]" value="<%= @user_data.datas[:source]  if @user_data.datas%>"/>
+	</li>
+  </ol>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+<%#= link_to 'Back', user_datas_path %>
